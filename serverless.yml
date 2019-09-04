@@ -1,0 +1,21 @@
+service: getninjas-frontend-api
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: production
+  region: us-east-1
+
+functions:
+  getForms:
+    handler: functions/getForms.handler
+    memorySize: 128
+    timeout: 30
+    events:
+      - http:
+          path: forms
+          method: get
+          cors: true
+
+plugins:
+  - serverless-offline
