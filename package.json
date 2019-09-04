@@ -1,0 +1,23 @@
+{
+  "name": "getninjas-frontend-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "coverage": "yarn test -- --coverage",
+    "standard": "standard"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
+  "repository": "git@github.com:wilfernandesjr/getninjas-frontend-api.git",
+  "author": "wilfernandesjr <wilmar.wfsj@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "serverless-offline": "^3.20.3",
+    "standard": "^12.0.1"
+  }
+}
