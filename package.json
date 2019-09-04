@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "local": "serverless offline",
     "test": "jest",
     "coverage": "yarn test -- --coverage",
     "standard": "standard"
