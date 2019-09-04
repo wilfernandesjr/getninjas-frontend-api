@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+- '8.10'
+
+env:
+  global:
+    # AWS_ACCESS_KEY_ID
+    - secure: "MQWCbL3p69adP+fMTx7DmrxOPC0h5OiewGS3LCq1rpBRltSIzha0g/FcTJTnSGESjsiMY93x7szuX5g2fXYORxa9jhiUuf8yyELDO6FN+daJ7gGlfe90Ay9J/EnoNTvBqSkB8MMGTKW8z8iohCG84OO7Xm6mOgrRfxn+4Ss7WIejB3n8U/ayl6Fq5ghnDsLxWh7K9F9U12xoxhEmFjGv7+dKs25Hn8yOsL0XMipzVpsVcZhKIfRoiOh1e9H/R2qLcLvId6ZTo6/wiofKdWQs4ufL8kFbtuIpUmM2hP+/wsh5AKFvXPFCaFwpA4DTeMi6bm2HbTvhdcSWsmSjTqF2IuyUiMwoVSp9cFDwfveCUwduKjeWRlAm10t4athMiNJ3HynNfZa4g10jIUwb5J3jJXNAQy0Y1Vgc9QBbaqDOLGVtdK8IEm19lzx1MuNdjPhrqMG7Wku81npgnHueGTTlXm9UM3TWXAbUqwhKmozWP8hWDthbkFioD+GvRo1cdGfbP/W3r+RUSux2mB3HyPp7fuE+ptWBSWQmNT8HjagX88gEiAwd8yvZtceYGKjMECQ4JOUMU2BC+czsP4cXDzlN6RGt8Cm+v+AYAoW7NSzZlB8s9del5ChEgOBtwQ9jwz8SUgC4oe90ybavP/Pcea0wAJuvLtnL4vpfaM67xesU4Mw="
+    # AWS_SECRET_ACCESS_KEY
+    - secure: "EEI/2fQkBNYgibp1HqERmZgVdRYSMRKjnScQMzvMOaK1gTK+oOuPiskl63WTDO0uFVOOK9VDZoyHJdRUDvfUPxWb/0OdG/M1wt9BmYhD5n782SZk27Diojet834eMI26Y8ibXXXzPTlk2Oo8Bl7h386Lr6RpNO66oyfyGBYgYbT1MpTc1k0UGglr9iRzK8zgfHje8+mvBfAWUSmsMSCyXnI4g0lxCauMWeom8zbmqpmhYNP75suWUJBINKnCu5TejqrCWmysbykVBB8KGbwBfIJNXfUwiQsre0Bg4XkPaT41SiPLgLeVkAfThQWbc9tY0s2KTQwVYQd9Ok3RIYBByXy47rXzSqdaaA/Zq7bCv+dmqEb71r90o6Cbw0oD4t45iUvMgvIf0pqpN4/X0whpHXgUcybEyFAPXxel2j5G+YJCFNJPy0+QyjDoQBt/BkIcPLqyfOSeL9hjR3bk25/Kj9+HS+u5ZpS4g6er9Z9zzlfeG0AsUwT4QC354rRHBBwqHw36IIP9DqofnjZ/kooava2QutZ/E3sBN3VNUReUagQ13XeKiBOpsi7bINBIDS6IH8SLXBnsTU5rRXPpellpTplg5QxGqKYkquetEGUmq9VbOiEYl4r54mFr0O3KhpCezOSwEu5dcmiMKJ2N7hh1gLZdnTvPY9S3O4+QPkTXE+Y="
+
+install:
+- npm install -g serverless
+- yarn install
+
+script:
+- yarn test
+- yarn run coverage
+
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: serverless deploy --stage production
+  on:
+    branch: master
